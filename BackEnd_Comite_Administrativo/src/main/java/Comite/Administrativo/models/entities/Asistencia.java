@@ -1,11 +1,18 @@
 package Comite.Administrativo.models.entities;
 
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -24,6 +31,15 @@ public class Asistencia {
 	
 	@Column(name="observacion_asi")
 	private String observacion;
+	
+	@JoinColumn(name= "id_reunion", referencedColumnName = "id_reunion") //Se mapea con una clave foránea
+	@ManyToOne
+	private Reunion reuniones;
+	
+	@JoinColumn(name= "id_persona", nullable = false) 
+	@OneToOne(fetch = FetchType.LAZY)
+	 //Atrivuto representa la asociacion con la clase persona
+	private Persona personas;
 	
 	
 	public Asistencia() {
@@ -57,6 +73,22 @@ public class Asistencia {
 
 	public void setObservacion(String observacion) {
 		this.observacion = observacion;
+	}
+
+	public Reunion getReuniones() {
+		return reuniones;
+	}
+
+	public void setReuniones(Reunion reuniones) {
+		this.reuniones = reuniones;
+	}
+
+	public Persona getPersonas() {
+		return personas;
+	}
+
+	public void setPersonas(Persona personas) {
+		this.personas = personas;
 	}
 
 	

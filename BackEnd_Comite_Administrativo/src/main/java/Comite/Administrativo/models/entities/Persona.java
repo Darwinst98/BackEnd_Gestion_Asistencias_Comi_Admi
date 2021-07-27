@@ -1,11 +1,16 @@
 package Comite.Administrativo.models.entities;
 
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,7 +36,11 @@ public class Persona{
 	@Column(name="cedula_per")
 	private String cedula;
 			
-		
+	@OneToMany(mappedBy="personas", fetch = FetchType.LAZY)//mappedBy va el nombre del atributo de esta clase en la clase asociada
+	private List<Pago> pagos;
+	
+	@OneToOne(mappedBy ="personas")
+	private Asistencia asistencias;
 	
 	public Persona() {
 		super();
@@ -80,6 +89,22 @@ public class Persona{
 
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
+	}
+
+	public List<Pago> getPagos() {
+		return pagos;
+	}
+
+	public void setPagos(List<Pago> pagos) {
+		this.pagos = pagos;
+	}
+
+	public Asistencia getAsistencias() {
+		return asistencias;
+	}
+
+	public void setAsistencias(Asistencia asistencias) {
+		this.asistencias = asistencias;
 	}
 
 	

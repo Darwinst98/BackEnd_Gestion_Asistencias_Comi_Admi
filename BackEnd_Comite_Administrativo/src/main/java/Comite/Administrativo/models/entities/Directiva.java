@@ -2,13 +2,16 @@ package Comite.Administrativo.models.entities;
 
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -28,6 +31,10 @@ public class Directiva {
 	
 	@Column(name="fecha_fin_dir")
 	private Date fechaFin;
+	
+	@OneToMany(mappedBy="directiva", fetch = FetchType.LAZY)//mappedBy va el nombre del atributo de esta clase en la clase asociada
+	private List<Dignatario> encargado;
+	
 	
 	public Directiva() {
 		super();
@@ -62,7 +69,13 @@ public class Directiva {
 		this.fechaFin = fechaFin;
 	}
 
-	
+	public List<Dignatario> getEncargado() {
+		return encargado;
+	}
+
+	public void setEncargado(List<Dignatario> encargado) {
+		this.encargado = encargado;
+	}
 
 	
 	

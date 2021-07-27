@@ -1,13 +1,18 @@
 package Comite.Administrativo.models.entities;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -31,6 +36,13 @@ public class Reunion {
 	@Column(name="tema_reu")
 	private String tema;
 	
+	@OneToMany(mappedBy="reuniones", fetch = FetchType.LAZY)//mappedBy va el nombre del atributo de esta clase en la clase asociada
+	private List<Asistencia> asistencias;
+	
+	@JoinColumn(name= "id_dignatario", nullable = false) 
+	@OneToOne(fetch = FetchType.LAZY)
+	 //Atrivuto representa la asociacion con la clase persona
+	private Dignatario dignatarios;
 	
 	public Reunion() {
 		super();
@@ -71,6 +83,22 @@ public class Reunion {
 
 	public void setTema(String tema) {
 		this.tema = tema;
+	}
+
+	public List<Asistencia> getAsistencias() {
+		return asistencias;
+	}
+
+	public void setAsistencias(List<Asistencia> asistencias) {
+		this.asistencias = asistencias;
+	}
+
+	public Dignatario getDignatarios() {
+		return dignatarios;
+	}
+
+	public void setDignatarios(Dignatario dignatarios) {
+		this.dignatarios = dignatarios;
 	}
 	
 	
