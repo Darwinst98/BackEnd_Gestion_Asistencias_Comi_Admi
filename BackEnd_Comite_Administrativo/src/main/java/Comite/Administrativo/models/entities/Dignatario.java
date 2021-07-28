@@ -13,8 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Dignatario")
-public class Dignatario {
-
+public class Dignatario{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +23,15 @@ public class Dignatario {
 	
 	@Column(name="rol_dig")
 	private String rol;
+	
+	@Column(name="nombre_dig")
+	private String nombre;
+	
+	@Column(name="apellido_dig")
+	private String apellido;
+	
+	@Column(name="cedula_dig")
+	private String cedula;
 	
 	@JoinColumn(name= "id_directiva", referencedColumnName = "id_directiva") //Se mapea con una clave foránea
 	@ManyToOne
