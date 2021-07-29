@@ -1,5 +1,6 @@
 package Comite.Administrativo.models.entities;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Basic;
@@ -17,7 +18,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Pago")
-public class Pago {
+public class Pago implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	
 	@Id

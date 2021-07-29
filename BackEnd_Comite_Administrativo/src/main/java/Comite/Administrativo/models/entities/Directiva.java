@@ -1,6 +1,7 @@
 package Comite.Administrativo.models.entities;
 
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
@@ -18,7 +19,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Directiva")
-public class Directiva {
+public class Directiva implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
