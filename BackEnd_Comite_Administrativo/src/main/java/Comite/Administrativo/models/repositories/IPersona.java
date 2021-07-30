@@ -6,4 +6,5 @@ import Comite.Administrativo.models.entities.Persona;
 
 public interface IPersona extends JpaRepository<Persona, Integer>{
 
+	
 }
