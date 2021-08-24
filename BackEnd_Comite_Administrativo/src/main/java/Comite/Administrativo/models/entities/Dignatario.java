@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="Dignatario")
 public class Dignatario implements Serializable{
@@ -39,6 +41,7 @@ public class Dignatario implements Serializable{
 	
 	@JoinColumn(name= "id_directiva", referencedColumnName = "id_directiva") //Se mapea con una clave foránea
 	@ManyToOne
+	@JsonIgnore
 	private Directiva directiva;
 	
 	@OneToOne(mappedBy ="dignatarios")

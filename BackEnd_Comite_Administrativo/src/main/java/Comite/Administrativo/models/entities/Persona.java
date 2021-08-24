@@ -34,9 +34,6 @@ public class Persona implements Serializable{
 	@Column(name="apellido_per")
 	private String apellido;
 	
-	@Column(name="numero_per")
-	private Number numero;
-	
 	@Column(name="cedula_per")
 	private String cedula;
 			
@@ -79,13 +76,6 @@ public class Persona implements Serializable{
 		this.apellido = apellido;
 	}
 
-	public Number getNumero() {
-		return numero;
-	}
-
-	public void setNumero(Number numero) {
-		this.numero = numero;
-	}
 
 	public String getCedula() {
 		return cedula;
@@ -111,7 +101,6 @@ public class Persona implements Serializable{
 		this.asistencias = asistencias;
 	}
 
-	
 	
 	
 

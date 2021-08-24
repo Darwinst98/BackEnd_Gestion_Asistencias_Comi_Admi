@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import Comite.Administrativo.models.entities.Persona;
 import Comite.Administrativo.models.repositories.IPersona;
@@ -18,21 +19,25 @@ public class PersonaService implements IPersonaService {
 	IPersona repository;
 	
 	@Override
+	@Transactional
 	public void save(Persona persona) {
 		repository.save(persona);
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public Optional<Persona> findById(Integer id) {
 		return repository.findById(id);
 	}
 
 	@Override
+	@Transactional
 	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public List<Persona> findAll() {
 		return (List<Persona>) repository.findAll();
 	}
